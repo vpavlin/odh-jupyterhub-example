@@ -1,4 +1,4 @@
-# odh-jupyterhub-example
+# Open Data Hub JupyterHub
 
 1. [Adding Custom Images](./docs/adding-custom-images.md)
 1. [Selecting Specific Nodes for Jupyter Notebook Pods](./docs/selecting-nodes.md)
