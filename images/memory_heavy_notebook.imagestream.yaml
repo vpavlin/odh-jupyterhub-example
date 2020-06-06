@@ -1,0 +1,19 @@
+ 
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    opendatahub.io/notebook-image: "true"
+  name: memory_heavy_notebook
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - annotations:
+      openshift.io/imported-from: quay.io/odh-jupyterhub/s2i-minimal-notebook:3.6
+    from:
+      kind: DockerImage
+      name: quay.io/odh-jupyterhub/s2i-minimal-notebook:3.6
+    name: latest
+    referencePolicy:
+      type: Source

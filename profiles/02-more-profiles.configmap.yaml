@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    jupyterhub: singleuser-profiles
+  name: more-extra-profiles
+data:
+  jupyterhub-singleuser-profiles.yaml: |
+      profiles:
+      - name: node tolerations
+        images:
+        - 'memory_heavy_notebook:latest'
+        env:
+          - name: WHERE_SHOULD_I_RUN
+            value: "This pod should be running on a node with label"
+        node_tolerations:
+        - key: my_memory_heavy_node
+          operator: Equal
+          value: "yes"
+          effect: NoSchedule
+        node_affinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: my_memory_heavy_node
+                operator: In
+                values:
+                - "true"

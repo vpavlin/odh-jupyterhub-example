@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: extra-profiles
+data:
+  jupyterhub-singleuser-profiles.yaml: |
+      profiles:
+      - name: extra profile
+        env:
+          - name: EXTRA_ENVIRONMENT_VARIABLE
+            value: "important value"
+      - name: extra profile with resources
+        resources:
+          requests:
+            memory: 1Gi
+            cpu: 500m
+          limits:
+            memory: 2Gi
+            cpu: 1
+      -
